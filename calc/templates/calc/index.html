@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Python button script
+</title>
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+ 
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark ">
+	 <a href="" class="navbar-brand font-weight-bold"> <img src="https://cloudcommercepro.com/wp-content/uploads/2019/03/warehouse-icon.png" style="height: 50px"><i> Entrepôt Optimisé</i></a>
+	</nav><br><br>
+	<div>
+	<form method="post" action="{% url 'home' %}">{% csrf_token %}
+		<!-- <h5 >Enter the Racks to be used:</h5><label for="digit-1">A-</label>
+	<input type="text" id="d1" name="digit-1" />
+	<label for="digit-2">B-</label>
+	<input type="text" id="d2" name="digit-2" />
+	<label for="digit-3">C-</label>
+	<input type="text" id="d3" name="digit-3" />
+	<span class="splitter">&ndash;</span>
+	<label for="digit-4">A-</label>
+	<input type="text" id="d4" name="digit-4"  />
+	<label for="digit-5">B-</label>
+	<input type="text" id="d5" name="digit-5"/>
+	<label for="digit-6">C-</label>
+	<input type="text" id="d6" name="digit-6" /> -->
+	<h5>Enter Product Name</h5>
+	<select id="name" name="name">
+      <option value="0">Phone</option>
+      <option value="1">Chairs</option>
+      <option value="2">Kurti</option>
+    </select>
+	
+	<h5>Enter Product Volume</h5>
+	<input type="text" name="weights">
+	<br>
+	<input type="submit" value="submit">
+
+</form></div>
+
+<br><br>
+<table id="storagealloc" cellspacing="0">
+  <tr>
+    <th>RACK LOCATION</th>
+    <th>ITEMS</th>
+    <th>PACKED VOLUME</th>
+    <th>PROFIT ASSOCIATED</th>
+  </tr>
+  	{% for i,j in d0.items %}
+  	
+  	<tr>
+  		<td>{{j.bin}}</td>
+  		<td>{{j.items}}</td>
+  		<td>{{j.packedwt}}</td>
+  		<td>{{j.packedval}}</td>
+	</tr>
+	{%endfor%}
+
+  
+    
+  
+</table>
+
+{%block body%}
+
+<!--  <h1>{{d1.t}}</h1>
+<h1>{{d1.cal}}</h1>
+{% for item in d2 %}
+<h1>{{item}}</h1>
+{%endfor%}
+
+
+
+<hr>-->
+
+
+<hr>
+
+{%endblock%}
+
+</body>
+</html>
+<style type="text/css">
+	#storagealloc {
+		padding: 20px;
+		background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  text-align: center;
+  margin: 0px 50px;
+}
+
+#storagealloc td, #storagealloc th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#storagealloc tr:nth-child(even){background-color: #f2f2f2;}
+
+#storagealloc tr:hover {background-color: #ddd;}
+
+#storagealloc th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+	body{background-image: url('https://image.freepik.com/free-photo/large-modern-warehouse-theme-blur-background_1385-1621.jpg');}
+	form{
+		
+		background-color: lightgray;
+		padding: 20px;
+		text-align: center;
+		margin: 0px 50px;
+	}
+	input[type=text], select, textarea {
+		width: 70%; /* Full width */
+	  padding: 12px; /* Some padding */ 
+	  border: 1px solid #ccc; /* Gray border */
+	  border-radius: 4px; /* Rounded borders */
+	  box-sizing: border-box; /* Make sure that padding and width stays in place */
+	  margin-top: 6px; /* Add a top margin */
+	  margin-bottom: 16px; /* Bottom margin */
+	  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+	}
+
+	/* Style the submit button with a specific background color etc */
+	input[type=submit] {
+	  background-color: #4CAF50;
+	  color: white;
+	  padding: 12px 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+
+	/* When moving the mouse over the submit button, add a darker green color */
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+
+	/* Add a background color and some padding around the form */
+	.container {
+	  border-radius: 5px;
+	  background-color: #f2f2f2;
+	  padding: 20px;
+	  color: red;
+	}
+	
+	label{width:10px;
+		 height:10px;
+		 font-size:small;
+
+	}
+	
+
+	input#d1{
+		 width:50px;
+		 height:20px;}
+
+	input#d2{
+		 width:50px;
+		 height:20px;}
+
+	input#d3{
+		 width:50px;
+		 height:20px;}
+
+
+	input#d4{
+		 width:50px;
+		 height:20px;}
+
+	input#d5{
+		 width:50px;
+		 height:20px;}
+
+	input#d6{
+		 width:50px;
+		 height:20px;}
+
+
+	splitter {
+		padding: 0 5px;
+		color: white;
+		font-size: 24px;
+	}
+
+
+
+</style>
